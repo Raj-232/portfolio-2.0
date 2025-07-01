@@ -9,7 +9,9 @@ export const SideBar = () => {
             exit={{ opacity: 0, x: -50 }}
             transition={{ duration: 0.5 }} 
             className='fixed left-0 bg-black w-[60px] text-gray-400 h-full text-lg flex flex-col items-center z-20'>
+                <Link href="#home">
             <div className='font-bold text-2xl py-1 px-2 rounded-lg bg-gray-800 my-4'>A<span className='text-primary'>.</span></div>
+                </Link>
             <div className=' w-full'>
                 <div>
                     <Link

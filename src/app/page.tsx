@@ -4,22 +4,10 @@ import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { IconArrowRight, IconEmojiSmileFill, IconGithub, IconLinkDin, IconMail, IconPhoneCall, IconTerminalFill, IconWhatsapp } from "@/lib/Icons";
 import Link from "next/link";
-import { ProjectsCard } from "./ProjectsCard";
 import { useState } from "react";
-import { Dialog, DialogContent } from "@/components/ui/dialog";
-import ProjectDialog from "./ProjectDialog";
 import AnimatedDiv from "@/lib/AnimatedDiv";
-interface ProjectData {
-  name: string,
-  decription: string,
-  tech: string,
-  img: string,
-  projectlink: string,
-  websitelink: string
-}
+
 const Page = () => {
-  const [open, setOpen] = useState(false)
-  const [index, setIndex] = useState<number>(0)
   const handleDownload = () => {
     // Create a temporary anchor element
     const link = document.createElement('a');
@@ -32,36 +20,183 @@ const Page = () => {
     document.body.removeChild(link);
 
   };
-  const projectdata: ProjectData[] = [
+  const projectdata = [
     {
-      name: "Archie Home Decors",
-      decription: " Developed While exterior design focuses on the outside appearance of buildings or structures, and as such is a part of on-campus or online architecture degree programs, interior design deals with the inside look and feel of those same buildings or structures. application using React.js (frontend) and Node.js (backend). Implemented desgin using tailwind css and twailwind freamwork in shadcn ui its show smoth so using this appliction Implemented React.js to enhance the user interface and improve page loading times.Contributed to a cohesive team effort, seamlesslyintegrating technologies for project success.",
-      tech: "Next JS - React JS - Redux - TailwindCss - Javascript",
-      img: '/images/project1.png',
-      projectlink: "https://github.com/Raj-232",
-      websitelink: "https://ahd-ui.onrender.com/home"
+      name: "Online Meat Delivery App",
+      decription: [
+        "Designed and implemented a microservices-based architecture using FastAPI for modularity and scalability.",
+        "Developed backend services including User, Product, Order, Delivery, and Authentication services.",
+        "Implemented JWT-based authentication and role-based access control for secure API access.",
+        "Built the customer mobile app using Flutter with features like product browsing, order placement, and real-time tracking.",
+        "Created a delivery partner app using React Native to manage pickups, delivery routes, and status updates.",
+        "Developed a React.js admin dashboard for managing products, orders, delivery tracking, and customer support.",
+        "Integrated payment gateway Razorpay for secure online transactions.",
+        "Enabled real-time order updates and delivery tracking using WebSocket and Redis.",
+        "Containerized services using Docker and prepared for deployment on OpenShift/Kubernetes.",
+        "Used PostgreSQL for storing user data, product inventory, and transaction history.",
+        "Implemented CI/CD pipelines using GitHub Actions for automated build and deployment.",
+        "Ensured responsive, user-friendly UI with smooth navigation and error handling across all apps.",
+        "Integrated push notifications to alert users about order status, offers, and delivery updates.",
+        "Focused on performance optimization and secure communication between services."
+      ],
+      tech: [
+        "FastAPI", "Flutter", "React Native", "React.js", "Razorpay", "WebSocket", "Redis", "Docker", "OpenShift", "Kubernetes", "PostgreSQL", "GitHub Actions", "JWT", "CI/CD"
+      ]
     },
     {
-      name: "BookUsShow",
-      decription: " This project aims to build a website using Next.js with TypeScript, RTK Query, and Tailwind CSS. It will display upcoming events and offer personalized recommendations to users. Key features include event listing, recommendations based on user preferences, responsive design, search and filtering options. Development involves integrating APIs, designing UI with Tailwind CSS, and ensuring robust testing and deployment. The goal is to create a modern, user-friendly platform for discovering and engaging with events",
-      tech: "Next JS - React JS - Redux - TailwindCss - TypeScript",
-      img: '/images/project2.png',
-      projectlink: "https://github.com/Raj-232/bookusshow.git",
-      websitelink: "https://bookusshow.onrender.com/home"
+      name: "Application Performance Monitoring (APM) System",
+      decription: [
+        "Implemented a robust monitoring system for tracing, logging, and collecting metrics to enhance real-time observability and debugging.",
+        "Integrated OpenTelemetry (OTel) to collect telemetry data from various microservices and applications.",
+        "Provided deep insights into application performance, helping teams optimize and troubleshoot issues efficiently."
+      ],
+      tech: ["OpenTelemetry (OTel)", "Microservices", "Observability"]
     },
     {
-      name: "Note Your Tasks",
-      decription: " Note Your Tasks is a dynamic project developed using React.js, designed to streamline task management. Users can effortlessly add tasks to the list, each with a unique description. The interface allows users to mark tasks as completed with a simple click, facilitating efficient tracking of progress. Additionally, users have the flexibility to delete tasks when they are no longer relevant. The project employs React.js to ensure a responsive and intuitive user experience, enhancing productivity and organization. With its user-friendly interface and robust functionality, Note Your Tasks exemplifies the power of React.js in modern web development and stands as a testament to effective task management solutions.",
-      tech: "React JS",
-      img: '/images/project3.png',
-      projectlink: "https://github.com/Raj-232",
-      websitelink: "https://noteyourtasks.netlify.app/"
+      name: "Infrastructure Monitoring Platform",
+      decription: [
+        "Designed a system to monitor nodes, pods, events, and cluster health across Kubernetes environments.",
+        "Developed real-time dashboards using Apache Superset for visualizing infrastructure health and usage patterns.",
+        "Integrated Prometheus and Grafana for real-time alerting and performance analytics."
+      ],
+      tech: ["Kubernetes", "Apache Superset", "Prometheus", "Grafana"]
+    },
+    {
+      name: "Edge Monitoring Solution",
+      decription: [
+        "Developed an edge monitoring framework to connect multiple edge devices, enabling visibility of pod, node, and cluster information in a unified dashboard.",
+        "Ensured seamless integration with existing observability platforms to provide real-time insights into edge infrastructure.",
+        "Implemented lightweight monitoring agents on edge devices to capture key performance metrics."
+      ],
+      tech: ["Edge Devices", "Observability", "Monitoring"]
+    },
+    {
+      name: "Sustainability Monitoring Dashboard",
+      decription: [
+        "Created a sustainability-focused dashboard for monitoring the resource efficiency of Kubernetes clusters, including node and pod sustainability tracking.",
+        "Optimized resource allocation and sustainability by analyzing historical and real-time data on cluster resource consumption.",
+        "Enhanced cloud cost efficiency by implementing intelligent scaling recommendations."
+      ],
+      tech: ["Kubernetes", "Sustainability", "Cloud Cost Optimization"]
+    },
+    {
+      name: "VPBank - Vietnam Role-Based Access Control",
+      decription: [
+        "Developed a role-based access control system using React for the frontend and Python FastAPI for backend API services.",
+        "Implemented role-specific access restrictions for Admin, Gold, and Platinum customers.",
+        "Utilized Trino with file-based access control to manage schema and table-level access based on user roles.",
+        "Enabled dynamic permissions for schema and catalog table management.",
+        "Integrated customer loyalty data to enable promotional program targeting based on spending behavior."
+      ],
+      tech: ["React", "FastAPI", "Trino", "RBAC"]
+    },
+    {
+      name: "TitanData (Resume Parsing AI Website)",
+      decription: [
+        "Frontend Development: Built the frontend of the resume parsing AI website using React.js, ensuring a seamless user experience.",
+        "Backend Development: Developed the backend using Python, integrating AI models for resume parsing.",
+        "Real-Time Data Processing: Implemented real-time data processing and parsing functionalities to enhance user experience and efficiency."
+      ],
+      tech: ["React.js", "Python", "AI", "Real-Time Processing"]
+    },
+    {
+      name: "Perfido (Performance Testing Website)",
+      decription: [
+        "Frontend Development: Developed the frontend using Next.js, creating an intuitive and responsive user interface.",
+        "Backend Development: Built the backend with Nest.js, ensuring robust performance testing capabilities.",
+        "Performance Metrics: Integrated various performance metrics and reporting features to provide detailed insights into application performance."
+      ],
+      tech: ["Next.js", "Nest.js", "Performance Testing"]
     }
-  ]
-  const handleOpen = (index: number) => {
-    setIndex(index)
-    setOpen(true)
-  }
+  ];
+  // Add experience data array
+  const experienceData = [
+    {
+      company: "Zaga Open Source Pvt Ltd",
+      role: "Software Engineer",
+      period: "Jun 2024 - Present",
+      location: "Kovilpatti, India",
+      description: [
+        "Designed and implemented a Data Mesh Architecture utilizing OpenTelemetry (OTel), Kafka, Hive, Iceberg, MinIO, Trino, and Redis for scalable and efficient data processing.",
+        "Developed a real-time observability platform by integrating tracing, logging, and metrics collection to monitor system health.",
+        "Built a high-performance data ingestion framework using FastAPI, enabling seamless data flow between microservices.",
+        "Engineered a React-based frontend to visualize infrastructure monitoring, system health, and analytics dashboards.",
+        "Implemented role-based access control (RBAC) for data access management, leveraging Trino and Iceberg for secure and structured access policies.",
+        "Led Kubernetes, Docker, Helm, and OpenShift deployments, automating application provisioning and ensuring high availability and scalability.",
+        "Optimized MinIO-based object storage for handling large-scale telemetry and analytics data, improving storage efficiency and retrieval performance.",
+        "Developed real-time data analytics and processing pipelines using Kafka and Trino, enabling fast query execution for observability insights.",
+        "Developed and fine-tuned AI/ML models for anomaly detection using Isolation Forest, and Hugging Face.",
+        "Implemented a Retrieval-Augmented Generation (RAG) pipeline integrating GPT-2 and Milvus vector database to enhance system intelligence.",
+        "Focused on performance tuning, monitoring, and optimization to ensure seamless user experience and efficient system operations."
+      ],
+      skills: [
+        "OpenTelemetry (OTel)",
+        "Kafka",
+        "Hive",
+        "Iceberg",
+        "MinIO",
+        "Trino",
+        "Redis",
+        "FastAPI",
+        "React",
+        "RBAC",
+        "Kubernetes",
+        "Docker",
+        "Helm",
+        "OpenShift",
+        "Milvus",
+        "GPT-2",
+        "Hugging Face",
+        "AI/ML",
+        "Python",
+        "Data Mesh"
+      ]
+    },
+    {
+      company: "Icanio Technologies",
+      role: "Software Development Engineer Intern",
+      period: "09/2023 - 02/2024",
+      location: "Tirunelveli",
+      description: [
+        "Developed user interfaces and components using React.js, ensuring responsiveness and a seamless user experience across different devices and browsers.",
+        "Contributed to backend development by building RESTful APIs, handling authentication, and optimizing database operations using Node.js, MongoDB, and SQL.",
+        "Worked closely with designers and backend developers to integrate frontend components with backend services, fostering effective collaboration and achieving project goals.",
+        "Actively participated in code reviews, team meetings, and adopted agile methodologies, gaining valuable insights into software development best practices and enhancing my skills as a developer."
+      ],
+      skills: [
+        "React Js",
+        "Node Js",
+        "Next JS",
+        "Nest Js",
+        "TypeScript",
+        "Mui",
+        "Tailwind Css",
+        "MangoDb",
+        "Sql",
+        "REST APIs",
+        "Web Socket"
+      ]
+    },
+    {
+      company: "Forge Innovation & Ventures",
+      role: "Graduate Innovation Engineer Trainee",
+      period: "02/2023 - 06/2023",
+      location: "Tirunelveli",
+      description: [
+        "Applied academic IoT knowledge: Used theoretical learning in practical scenarios, particularly in IoT applications.",
+        "Led innovation projects: Took charge of projects to solve problems with IoT solutions, actively contributing to problem-solving efforts.",
+        "Gained hands-on IoT experience: Implemented IoT solutions in various sectors, like smart buildings and healthcare, learning about IoT systems firsthand.",
+        "Developed professionally: Collaborated with mentors, enhancing technical and soft skills vital for professional growth and learning in a real-world setting."
+      ],
+      skills: [
+        "arduino",
+        "IoT",
+        "php",
+        "Sql",
+        "Inovation"
+      ]
+    }
+  ];
   return (
     <div className="lg:px-48 px-4">
 
@@ -73,18 +208,14 @@ const Page = () => {
         </AnimatedDiv>
         <AnimatedDiv>
           <div className="md:text-5xl text-3xl font-bold">
-            I am <span className="text-primary">Full Stack developer</span>
+            I am <span className="text-primary">Full Stack Software Developer</span>
           </div>
         </AnimatedDiv>
         <AnimatedDiv>
-
           <div className="text-lg">
-            Experienced software developer proficient in React and Node.js.
-            Skilled in creating scalable web applications with a focus on high-quality code.
-            Strong in both front-end and back-end development, with a collaborative mindset
+            Experienced in React, Python, and building scalable web apps.
           </div>
         </AnimatedDiv>
-
         <AnimatedDiv>
           <Button onClick={handleDownload}>Download Resume</Button>
         </AnimatedDiv>
@@ -93,7 +224,6 @@ const Page = () => {
 
       <div id="about" className="space-y-4 py-14">
         <AnimatedDiv>
-
           <div className="text-5xl flex items-center space-x-4 font-bold">About
             <span className="text-primary">.</span> <Separator />
           </div>
@@ -103,13 +233,7 @@ const Page = () => {
           <div className="capitalize space-y-4 text-lg md:col-span-2">
             <AnimatedDiv>
               <div>
-                Anandharaj is a seasoned software developer proficient in React and Node.js, adept at building scalable web applications with a focus on top-notch code quality.
-              </div>
-            </AnimatedDiv>
-            <AnimatedDiv>
-
-              <div>
-                With a comprehensive skill set spanning front-end and back-end development, Anandharaj is passionate about creating intuitive user interfaces and contributing to cutting-edge projects.
+                Full Stack Software Developer skilled in building scalable and efficient software solutions across frontend and backend development. Experienced in designing robust APIs using Python (FastAPI), developing responsive UIs with React.js and Next.js, and integrating modern databases like Trino and Iceberg. Proficient in DevOps tools including Docker, Kubernetes, and Helm, with experience in cloud-native deployments using OpenShift. Adept at creating real-time observability platforms, automating workflows with GitHub Actions, and applying AI/ML models for anomaly detection. Passionate about delivering high-quality, secure, and maintainable applications through microservices architecture, with a strong focus on performance optimization and user experience.
               </div>
             </AnimatedDiv>
             <AnimatedDiv>
@@ -149,8 +273,7 @@ const Page = () => {
           </div>
           <div className="space-y-6">
             <AnimatedDiv>
-
-              <div className="flex space-x-3 text-xl items-center"> <IconTerminalFill /><div>Use at work</div>
+              <div className="flex space-x-3 text-xl items-center"> <IconTerminalFill /><div>Work Skills</div>
               </div>
             </AnimatedDiv>
             <AnimatedDiv>
@@ -168,11 +291,9 @@ const Page = () => {
               </div>
             </AnimatedDiv>
             <AnimatedDiv>
-
-              <div className="flex space-x-3 items-center text-xl"> <IconEmojiSmileFill /><div>Use at Fun</div></div>
+              <div className="flex space-x-3 items-center text-xl"> <IconEmojiSmileFill /><div>Fun Skills</div></div>
             </AnimatedDiv>
             <AnimatedDiv>
-
               <div className="flex-wrap space-x-2 space-y-2">
                 <Badge>Tailwind</Badge>
                 <Badge>Python</Badge>
@@ -183,121 +304,79 @@ const Page = () => {
               </div>
             </AnimatedDiv>
           </div>
-
         </div>
       </div>
 
 
       <div id="project" className="space-y-8 py-14">
         <AnimatedDiv>
-
           <div className="text-5xl flex items-center space-x-4 font-bold"><Separator />Projects<span className="text-primary">.</span></div>
         </AnimatedDiv>
         <div className="grid md:grid-cols-2 grid-cols-1  gap-4">
           {
             projectdata.map((data, index) => (
-
               <div key={index}>
                 <AnimatedDiv>
-                  <ProjectsCard handleOpen={handleOpen} index={index} name={data.name} decription={data.decription} tech={data.tech} img={data.img} projectlink={data.projectlink} websitelink={data.websitelink} />
+                  <div className="bg-background border rounded-lg p-6 shadow space-y-3 h-96 flex flex-col">
+                    <div className="text-2xl font-bold flex items-center space-x-2">
+                      <span>{data.name}</span>
+                      <span className="text-primary">.</span>
+                    </div>
+                    <div className="space-y-1 text-base flex-1 overflow-y-auto pr-2">
+                      {Array.isArray(data.decription) ? data.decription.map((desc, i) => (
+                        <div key={i}>• {desc}</div>
+                      )) : <div>• {data.decription}</div>}
+                    </div>
+                    <div className="flex flex-wrap gap-2 pt-2">
+                      {Array.isArray(data.tech) ? data.tech.map((tech, i) => (
+                        <Badge key={i}>{tech}</Badge>
+                      )) : <Badge>{data.tech}</Badge>}
+                    </div>
+                  </div>
                 </AnimatedDiv>
               </div>
-
             ))
           }
-
         </div>
-        <Dialog open={open} onOpenChange={setOpen} >
-          <ProjectDialog projectdata={projectdata[index]} />
-        </Dialog>
       </div>
 
 
       <div id="exp" className="space-y-12 py-14">
         <AnimatedDiv>
-
-          <div className="text-5xl flex items-center space-x-4 font-bold">Experience<span className="text-primary">.</span> <Separator /></div>
+        <div className="text-5xl flex items-center space-x-4 font-bold">Experience<span className="text-primary">.</span> <Separator /></div>
         </AnimatedDiv>
-        <div className="space-y-4">
-          <div className="flex justify-between ">
-            <AnimatedDiv>
-
-              <div className="font-bold space-y-2 text-lg" >
-                <div>Icanio Technologies</div>
-                <div className="text-primary">Software Development Engineer Intern</div>
-              </div>
-            </AnimatedDiv>
-            <AnimatedDiv>
-
-              <div className="text-right space-y-2">
-                <div>09/2023 - 02/2024</div>
-                <div>Tirunelveli</div>
-              </div>
-            </AnimatedDiv>
-          </div>
-          <AnimatedDiv>
-
-            <div>
-              Developed user interfaces and components using React.js, ensuring responsiveness and a seamless user experience across different devices and browsers.
-              Contributed to backend development by building RESTful APIs, handling authentication, and optimizing database operations using Node.js, MongoDB, and SQL.
-              Worked closely with designers and backend developers to integrate frontend components with backend services, fostering effective collaboration and achieving project goals.
-              Actively participated in code reviews, team meetings, and adopted agile methodologies, gaining valuable insights into software development best practices and enhancing my skills as a developer.
+        {experienceData.map((exp, idx) => (
+          <div className="space-y-4" key={idx}>
+            <div className="flex justify-between ">
+              <AnimatedDiv>
+                <div className="font-bold space-y-2 text-lg" >
+                  <div>{exp.company}</div>
+                  <div className="text-primary">{exp.role}</div>
+                </div>
+              </AnimatedDiv>
+              <AnimatedDiv>
+                <div className="text-right space-y-2">
+                  <div>{exp.period}</div>
+                  <div>{exp.location}</div>
+                </div>
+              </AnimatedDiv>
             </div>
-          </AnimatedDiv>
-          <AnimatedDiv>
-
-            <div className="flex-wrap space-x-2 space-y-2">
-              <Badge>React Js</Badge>
-              <Badge>Node Js</Badge>
-              <Badge>Next JS</Badge>
-              <Badge>Nest Js</Badge>
-              <Badge>TypeScript</Badge>
-              <Badge>Mui</Badge>
-              <Badge>Tailwind Css</Badge>
-              <Badge>MangoDb</Badge>
-              <Badge>Sql</Badge>
-              <Badge>REST APIs</Badge>
-              <Badge>Web Socket</Badge>
-            </div>
-          </AnimatedDiv>
-        </div>
-        <div className="space-y-4">
-          <div className="flex justify-between ">
             <AnimatedDiv>
-
-              <div className="font-bold space-y-2 text-lg" >
-                <div>Forge Innovation & Ventures</div>
-                <div className="text-primary">Graduate Innovation Engineer Trainee</div>
+              <div>
+                {exp.description.map((desc, i) => (
+                  <div key={i}>• {desc}</div>
+                ))}
               </div>
             </AnimatedDiv>
             <AnimatedDiv>
-
-              <div className="text-right space-y-2">
-                <div>02/2023 - 06/2023</div>
-                <div>Tirunelveli</div>
+              <div className="flex-wrap space-x-2 space-y-2">
+                {exp.skills.map((skill, i) => (
+                  <Badge key={i}>{skill}</Badge>
+                ))}
               </div>
             </AnimatedDiv>
           </div>
-          <AnimatedDiv>
-
-            <div>
-              Applied academic IoT knowledge: Used theoretical learning in practical scenarios, particularly in IoT applications.
-              Led innovation projects: Took charge of projects to solve problems with IoT solutions, actively contributing to problem-solving efforts.
-              Gained hands-on IoT experience: Implemented IoT solutions in various sectors, like smart buildings and healthcare, learning about IoT systems firsthand.
-              Developed professionally: Collaborated with mentors, enhancing technical and soft skills vital for professional growth and learning in a real-world setting.
-            </div>
-          </AnimatedDiv>
-          <AnimatedDiv>
-
-            <div className="flex-wrap space-x-2 space-y-2">
-              <Badge>arduino</Badge>
-              <Badge>IoT</Badge>
-              <Badge>php</Badge>
-              <Badge>Sql</Badge>
-              <Badge>Inovation</Badge>
-            </div>
-          </AnimatedDiv>
-        </div>
+        ))}
       </div>
 
 
@@ -310,11 +389,10 @@ const Page = () => {
         <div className="text-lg md:w-2/3 text-center">
           <AnimatedDiv>
             <div>
-              Shoot me an email if you want to connect! You can also find me on <span className="text-primary"><Link href="https://www.linkedin.com/in/anandharaj-Link-821029229/" target="_blank" >Linkedin</Link></span> or <span className="text-primary"><Link href="https://wa.me/918925191383" target="_blank">Whatsapp</Link></span>{` if that's more your speed.`}
+              Email or connect on <span className="text-primary"><Link href="https://www.linkedin.com/in/anandharaj-Link-821029229/" target="_blank" >Linkedin</Link></span> or <span className="text-primary"><Link href="https://wa.me/918925191383" target="_blank">Whatsapp</Link></span>.
             </div>
           </AnimatedDiv>
         </div>
-
         <AnimatedDiv>
           <Link href="mailto:aaraj232@gmail.com" className="space-x-2 text-lg font-bold flex items-center hover:text-primary" >
             <IconMail className="w-5 h-5" /> <div>aaraj232@gmail.com</div>

@@ -23,9 +23,9 @@ export const ProjectsCard = (
         projectlink,
         websitelink }: ProjectData) => {
     return (
-        <Card className='dark:border-none'>
+        <Card className='dark:border-none h-full'>
             <div className='p-4 cursor-pointer' onClick={()=>handleOpen(index)}>
-                <img src={img} alt='project1' className=' shadow-2xl hover:rotate-6 hover:scale-[1.05]  transition-transform duration-300 ease-in-out' />
+                <img src={img}   alt='project1' className='h-80 w-full bg-contain shadow-2xl hover:rotate-6 hover:scale-[1.05]  transition-transform duration-300 ease-in-out' />
             </div>
             <div className='w-full h-full bg-background space-y-2 p-4'>
                 <div className="flex w-full  text-xl items-center space-x-4 font-bold">
