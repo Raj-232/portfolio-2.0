@@ -13,7 +13,7 @@ import ProjectDialog from "./ProjectDialog";
 import { ProjectsCard } from "./ProjectsCard";
 
 const heroStats = [
-  { value: "5+", label: "Years building production systems" },
+  { value: "2+", label: "Years building production systems" },
   { value: "25+", label: "APIs & services deployed" },
   { value: "400k+", label: "Telemetry traces observed daily" },
   { value: "70%", label: "B.E CGPA · GCE Tirunelveli" },
